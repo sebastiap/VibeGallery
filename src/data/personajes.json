@@ -1,0 +1,88 @@
+[
+  {
+    "Nombre": "Kusko",
+    "origen": "Las Locuras del Emperador",
+    "bots": [
+      {
+        "Nombre": "KuskoBot Oficial",
+        "Sitio": "Discord",
+        "Link": "https://discord.com/ejemplo-kusko"
+      },
+      {
+        "Nombre": "Emperador Interactivo",
+        "Sitio": "Telegram",
+        "Link": "https://t.me/ejemplo-kusko"
+      }
+    ],
+    "historia": [
+      {
+        "Nombre": "Historia Principal",
+        "Sitio": "Fandom Wiki",
+        "Link": "https://fandom.com/ejemplo-kusko-historia"
+      },
+      {
+        "Nombre": "Análisis del Personaje",
+        "Sitio": "YouTube",
+        "Link": "https://youtube.com/ejemplo-kusko-analisis"
+      }
+    ],
+    "Info": {
+      "Apariencia": "Emperador joven, delgado. Suele vestir de rojo y oro. A veces es una llama.",
+      "ColorFavorito": "Rojo Imperial",
+      "Gustos": "El poder, tener su propio parque acuático (Kuskotopía), que le den la razón.",
+      "Odia": "Que le toquen el ritmo, Yzma, el trabajo de campo.",
+      "Frase": "¡No me toques el ritmo!"
+    }
+  },
+  {
+    "Nombre": "Blancanieves",
+    "origen": "Cuentos clásicos / Blancanieves",
+    "bots": [
+      {
+        "Nombre": "Princesa AI",
+        "Sitio": "Web Propia",
+        "Link": "https://blancanieves-ai.com"
+      }
+    ],
+    "historia": [
+      {
+        "Nombre": "Cuento Original",
+        "Sitio": "Biblioteca Digital",
+        "Link": "https://biblioteca.com/blancanieves"
+      }
+    ],
+    "Info": {
+      "Apariencia": "Piel blanca como la nieve, labios rojos como la sangre, cabello negro como el ébano.",
+      "Gustos": "Cantar con los animales, cocinar, limpiar la casa de los enanos.",
+      "Frase": "Algún día mi príncipe vendrá."
+    }
+  },
+  {
+    "Nombre": "Cenicienta",
+    "origen": "Cuentos clásicos / La Cenicienta",
+    "bots": [
+      {
+        "Nombre": "Cenicienta Chat",
+        "Sitio": "WhatsApp",
+        "Link": "https://wa.me/ejemplo-cenicienta"
+      },
+      {
+        "Nombre": "Hada Madrina Bot",
+        "Sitio": "Telegram",
+        "Link": "https://t.me/ejemplo-hada"
+      }
+    ],
+    "historia": [
+      {
+        "Nombre": "Adaptación Literaria",
+        "Sitio": "Wikipedia",
+        "Link": "https://wikipedia.org/wiki/Cenicienta"
+      }
+    ],
+    "Info": {
+      "Apariencia": "Cabello rubio, viste harapos en su día a día y un hermoso vestido azul de gala.",
+      "ColorFavorito": "Azul celeste",
+      "Odia": "A su madrastra y hermanastras, perder sus zapatos."
+    }
+  }
+]

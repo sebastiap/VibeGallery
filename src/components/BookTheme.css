@@ -1,0 +1,180 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* Contenedor Principal (Estilo Página de Libro) */
+.book-container {
+  max-width: 750px;
+  margin: 30px auto;
+  padding: 40px;
+  background-color: #fbf5df; /* Color pergamino/papel antiguo */
+  background-image: radial-gradient(#e0d5b5 1px, transparent 0);
+  background-size: 20px 20px;
+  border: 3px double #8b5a2b; /* Doble borde dorado/marrón */
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(58, 38, 20, 0.25), 
+              inset 0 0 60px rgba(139, 90, 43, 0.15);
+  font-family: 'Merriweather', Georgia, serif;
+  color: #3a2614;
+}
+
+/* Breadcrumbs / Historial Superior */
+.book-breadcrumbs {
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #b89768;
+  font-size: 0.95rem;
+}
+
+.breadcrumb-item.link {
+  color: #8b2b2b;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.breadcrumb-item.link:hover {
+  color: #c0392b;
+  font-weight: bold;
+}
+
+.breadcrumb-item.active {
+  font-weight: bold;
+  color: #5c3a21;
+}
+
+.breadcrumb-separator {
+  margin: 0 8px;
+  font-size: 0.8rem;
+}
+
+/* Botones de Selección */
+.book-subtitle {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  color: #5c3a21;
+  margin-bottom: 20px;
+}
+
+.button-group {
+  display: grid;
+  /* Esto hace la magia: botones de mínimo 150px, que se expanden (1fr) si sobra espacio */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  width: 100%;
+}
+
+.book-button {
+  width: 100%; /* Asegura que el botón llene la celda del grid */
+  background: linear-gradient(180deg, #faf2d6 0%, #e8d9af 100%);
+  border: 2px solid #8b5a2b;
+  color: #4a2c11;
+  padding: 12px 24px;
+  font-family: 'Cinzel', serif;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 2px 3px 5px rgba(0,0,0,0.1);
+  transition: all 0.2s ease;
+}
+
+.book-button:hover {
+  background: #8b5a2b;
+  color: #fbf5df;
+  transform: translateY(-2px);
+  box-shadow: 2px 5px 8px rgba(0,0,0,0.2);
+}
+
+/* Tarjeta de Detalle del Cuento/Producto */
+.book-detail-card {
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.book-title {
+  font-family: 'Cinzel', serif;
+  font-size: 2.2rem;
+  color: #6d1b1b;
+  margin-bottom: 10px;
+}
+
+.book-meta {
+  font-size: 0.95rem;
+  color: #6b523b;
+  margin-bottom: 25px;
+  font-style: italic;
+}
+
+.book-meta .separator {
+  margin: 0 10px;
+}
+
+.book-image-wrapper {
+  margin: 20px 0;
+}
+
+.book-image {
+  max-width: 100%;
+  max-height: 320px;
+  border: 4px solid #fff;
+  outline: 2px solid #8b5a2b;
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  object-fit: cover;
+}
+
+.book-description {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  text-align: justify;
+  margin: 25px 0;
+  padding: 0 10px;
+}
+
+.reset-button {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+
+/* --- ESTILOS DEL MODAL DE PERSONAJES (Estilo Pergamino) --- */
+.character-modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  backdrop-filter: blur(3px);
+}
+
+.character-modal {
+  background-color: #fbf5df;
+  background-image: radial-gradient(#e0d5b5 1px, transparent 0);
+  background-size: 20px 20px;
+  border: 3px double #8b5a2b;
+  padding: 40px;
+  border-radius: 8px;
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+
+.character-modal h2 {
+  font-family: 'Cinzel', serif;
+  color: #6d1b1b;
+  margin-top: 0;
+  border-bottom: 1px dashed #b89768;
+  padding-bottom: 10px;
+}
