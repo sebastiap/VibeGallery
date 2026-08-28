@@ -3,14 +3,16 @@ import GallerySearch from './components/GallerySearch';
 import StreamingGallery from './components/StreamingGallery';
 import itemsData from './data/items.json';
 import SagaGallery from './components/SagaGallery'; // NUEVA Vista Asilo
+import BlogSection from './components/BlogSection';
+import GachaponSection from './components/GachaponSection';
 
 function App() {
   // Estado para controlar qué vista estamos viendo
-  const [view, setView] = useState('categorias'); // 'categorias' | 'canales' | 'asylum'
+  const [view, setView] = useState('gashapon'); // 'categorias' | 'canales' | 'asylum'
 
   // Función para determinar el color de fondo general según la vista
   const getBackgroundColor = (currentView) => {
-    if (currentView === 'canales') return '#141414'; // Oscuro streaming
+    if (currentView !== 'asylum' ) return '#141414'; // Oscuro streaming
     if (currentView === 'asylum') return '#eef2f3'; // Gris/blanco clínico asilo
     return '#fff'; // Blanco clásico libro
   };
@@ -19,7 +21,8 @@ function App() {
   const getTitleColor = (currentView) => {
     if (currentView === 'canales') return '#e50914'; // Rojo Netflix
     if (currentView === 'asylum') return '#16a085'; // Verde médico
-    return '#3a2614'; // Marrón clásico
+    if (currentView === 'gashapon') return '#b19ccc'; // Verde médico
+    return '#ece8e6'; // Marrón clásico
   };
 
   return (
@@ -28,28 +31,40 @@ function App() {
       {/* BARRA DE NAVEGACIÓN */}
       <nav style={navbarStyles}>
         <h1 style={{ margin: 0, fontSize: '1.5rem', color: getTitleColor(view), transition: 'color 0.3s' }}>
-          Mi Galería Dinámica
+          Dynamic Gallery
         </h1>
         <div style={{ display: 'flex', gap: '15px' }}>
           <button 
             style={getBtnStyle(view === 'categorias', view)} 
             onClick={() => setView('categorias')}
           >
-            Vista Clásica (Libro)
+            Book view (Categories)
           </button>
           <button 
             style={getBtnStyle(view === 'canales', view)} 
             onClick={() => setView('canales')}
           >
-            Vista de Canales (Streaming)
+            Channel view (Streaming)
           </button>
           {/* BOTÓN CORREGIDO PARA LA VISTA ASILO */}
           <button 
             style={getBtnStyle(view === 'asylum', view)} 
             onClick={() => setView('asylum')}
           >
-            🏥 Archivos del Asilo (Sagas)
+            🏥 Asylum Files (Sagas)
           </button>
+         <button 
+          style={getBtnStyle(view === 'blog', view)}
+          onClick={() => setView('blog')} 
+        >
+          📝 Blog
+        </button>
+                 <button 
+          style={getBtnStyle(view === 'gashapon', view)}
+          onClick={() => setView('gashapon')} 
+        >
+          🎰 Gachapon
+        </button>
         </div>
       </nav>
 
@@ -63,6 +78,9 @@ function App() {
         {view === 'categorias' && <GallerySearch data={itemsData} />}
         {view === 'canales' && <StreamingGallery data={itemsData} />}
         {view === 'asylum' && <SagaGallery />}
+        {view === 'blog' && <BlogSection />}
+        {view === 'gashapon' && <GachaponSection />}
+        
       </div>
 
     </div>

@@ -25,7 +25,7 @@ export default function StreamingGallery({ data }) {
   return (
     <div className="streaming-container">
       <div className="streaming-header">
-        <h2>Canales Disponibles</h2>
+        <h2>Available Channels</h2>
       </div>
 
       {/* RENDERIZADO DEL CARRUSEL POR CANAL */}
@@ -39,9 +39,9 @@ export default function StreamingGallery({ data }) {
                 className="carousel-card"
                 onClick={() => setSelectedItem(item)}
               >
-                <img src={item.Imagen} alt={item.Nombre} className="card-image" />
+                <img src={item.Imagen} alt={item.Name} className="card-image" />
                 <div className="card-overlay">
-                  <h4>{item.Nombre}</h4>
+                  <h4>{item.Name}</h4>
                 </div>
               </div>
             ))}
@@ -54,15 +54,24 @@ export default function StreamingGallery({ data }) {
         <div className="streaming-modal-backdrop" onClick={closeMainModal}>
           <div className="streaming-modal" onClick={e => e.stopPropagation()}>
             <button className="close-btn" onClick={closeMainModal}>X</button>
-            <img src={selectedItem.Imagen} alt={selectedItem.Nombre} className="modal-banner" />
+            <img src={selectedItem.Imagen} alt={selectedItem.Name} className="modal-banner" />
             
             <div className="modal-content">
-              <h2>{selectedItem.Nombre}</h2>
+              <h2>{selectedItem.Name}</h2>
               <p className="modal-meta">
-                <span className="match">98% para ti</span> {selectedItem.Anio} • {selectedItem.Tipo}
+                <span className="match">98% for you</span> {selectedItem.Anio} • {selectedItem.Type}
               </p>
               <p className="modal-desc">{selectedItem.Descripcion}</p>
-              <p className="modal-cast"><strong>Autor/Creador:</strong> {selectedItem.Autor}</p>
+              <a href={selectedItem.Link}>
+                  <button 
+                    key={selectedItem.Link} 
+                    className="streaming-character-btn"
+                    //onClick={() => setPersonajeSeleccionado(personaje)}
+                  >
+                   Play - "{selectedItem.Name}"
+                  </button>
+              </a>
+              <p className="modal-cast"><strong>Author:</strong> {selectedItem.Autor}</p>
               
               {/* NUEVA SECCIÓN: REPARTO / PERSONAJES */}
               {selectedItem.Personajes && selectedItem.Personajes.length > 0 && (
@@ -93,14 +102,14 @@ export default function StreamingGallery({ data }) {
             <h2>{personajeSeleccionado}</h2>
             <div className="character-placeholder-content">
               <p>
-                <em>Próximamente: Información detallada, actor de voz y biografía de {personajeSeleccionado} traída desde el JSON externo.</em>
+                <em>Coming Soon info of {personajeSeleccionado} </em>
               </p>
             </div>
             <button 
               className="streaming-character-close-btn" 
               onClick={() => setPersonajeSeleccionado(null)}
             >
-              Volver al título
+              Return to title
             </button>
           </div>
         </div>

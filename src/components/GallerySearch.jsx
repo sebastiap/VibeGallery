@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './BookTheme.css'; 
 
-const filterKeys = ["Categoria", "Tipo", "Nombre"];
+const filterKeys = ["Category", "Type", "Name"];
 
 export default function GallerySearch({ data }) {
   const [filters, setFilters] = useState({});
@@ -66,14 +66,14 @@ export default function GallerySearch({ data }) {
       {/* Breadcrumbs... */}
       <nav className="book-breadcrumbs">
         <span className="breadcrumb-item link" onClick={() => handleBreadcrumbClick(null)}>
-          📖 Inicio
+          📖 Home
         </span>
         {filterKeys.map(key => filters[key] && (
           <React.Fragment key={key}>
             <span className="breadcrumb-separator"> 🪶 </span>
             <span 
-              className={`breadcrumb-item ${key !== 'Nombre' ? 'link' : 'active'}`}
-              onClick={() => key !== 'Nombre' && handleBreadcrumbClick(key)}
+              className={`breadcrumb-item ${key !== 'Name' ? 'link' : 'active'}`}
+              onClick={() => key !== 'Name' && handleBreadcrumbClick(key)}
             >
               {filters[key]}
             </span>
@@ -84,7 +84,7 @@ export default function GallerySearch({ data }) {
       {/* Pantalla de Filtros */}
       {!isFinished ? (
         <div className="book-section">
-          <h2 className="book-subtitle">Selecciona una {currentKey}:</h2>
+          <h2 className="book-subtitle">Select a {currentKey}:</h2>
           <div className="button-group">
             {options.map(opt => (
               <button key={opt} className="book-button" onClick={() => handleSelect(currentKey, opt)}>
@@ -96,26 +96,36 @@ export default function GallerySearch({ data }) {
       ) : (
         /* Pantalla Final con Nuevo Bloque de Personajes */
         <div className="book-detail-card">
-          <h1 className="book-title">{selectedItem.Nombre}</h1>
+          <h1 className="book-title">{selectedItem.Name}</h1>
           <div className="book-meta">
-            <span><strong>Autor:</strong> {selectedItem.Autor}</span>
+            <span><strong>Author:</strong> {selectedItem.Autor}</span>
             <span className="separator">•</span>
-            <span><strong>Año:</strong> {selectedItem.Anio}</span>
+            <span><strong>Year:</strong> {selectedItem.Anio}</span>
           </div>
 
           {selectedItem.Imagen && (
             <div className="book-image-wrapper">
-              <img src={selectedItem.Imagen} alt={selectedItem.Nombre} className="book-image"/>
+              <img src={selectedItem.Imagen} alt={selectedItem.Name} className="book-image"/>
             </div>
           )}
 
           <p className="book-description">{selectedItem.Descripcion}</p>
+          <a href={selectedItem.Link}>
+                  <button 
+                    key={selectedItem.Link} 
+                    className="book-button"
+                    //onClick={() => setPersonajeSeleccionado(personaje)}
+                  >
+                   Play - "{selectedItem.Name}"
+                  </button>
+                  </a>
+
 
           {/* NUEVO: SECCIÓN DE PERSONAJES */}
           {selectedItem.Personajes && selectedItem.Personajes.length > 0 && (
             <div style={{ marginTop: '30px', borderTop: '1px solid #b89768', paddingTop: '20px' }}>
               <h3 style={{ fontFamily: 'Cinzel, serif', color: '#5c3a21', marginBottom: '15px' }}>
-                Conoce a los Personajes
+                Meet the characters
               </h3>
               <div className="button-group">
                 {selectedItem.Personajes.map(personaje => (
@@ -132,7 +142,7 @@ export default function GallerySearch({ data }) {
           )}
 
           <button className="book-button reset-button" onClick={() => handleBreadcrumbClick(null)} style={{ marginTop: '40px' }}>
-            ← Volver al inicio
+            ← Return Home
           </button>
         </div>
       )}
@@ -143,7 +153,7 @@ export default function GallerySearch({ data }) {
           <div className="character-modal" onClick={e => e.stopPropagation()}>
             <h2>{personajeSeleccionado}</h2>
             <p>
-              <em>Aquí conectaremos próximamente tu nuevo JSON para cargar la historia, foto y detalles de {personajeSeleccionado}.</em>
+              <em>Coming soon more details of {personajeSeleccionado}.</em>
             </p>
             <button 
               className="book-button reset-button" 
