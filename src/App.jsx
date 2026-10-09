@@ -6,7 +6,24 @@ import SagaGallery from './components/SagaGallery'; // NUEVA Vista Asilo
 import BlogSection from './components/BlogSection';
 import GachaponSection from './components/GachaponSection';
 
+
+
 function App() {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const NAV_ITEMS = [
+      { id: 'categorias', label: 'Book view (Categories)' },
+      { id: 'canales',    label: 'Channel view (Streaming)' },
+      { id: 'asylum',     label: '🏥 Asylum Files (Sagas)' },
+      { id: 'blog',       label: '📝 Blog' },
+      { id: 'gashapon',   label: '🎰 Gachapon' },
+    ];
+
+    const goTo = (id) => {
+      setView(id);
+      setMenuOpen(false);   // cierra el menú en móvil al elegir
+    };
+
   // Estado para controlar qué vista estamos viendo
   const [view, setView] = useState('gashapon'); // 'categorias' | 'canales' | 'asylum'
 
@@ -26,65 +43,48 @@ function App() {
   };
 
   return (
-    <div style={{ backgroundColor: getBackgroundColor(view), minHeight: '100vh', transition: 'background-color 0.3s' }}>
-      
-      {/* BARRA DE NAVEGACIÓN */}
-      <nav style={navbarStyles}>
-        <h1 style={{ margin: 0, fontSize: '1.5rem', color: getTitleColor(view), transition: 'color 0.3s' }}>
-          Dynamic Gallery
-        </h1>
-        <div style={{ display: 'flex', gap: '15px' }}>
-          <button 
-            style={getBtnStyle(view === 'categorias', view)} 
-            onClick={() => setView('categorias')}
-          >
-            Book view (Categories)
-          </button>
-          <button 
-            style={getBtnStyle(view === 'canales', view)} 
-            onClick={() => setView('canales')}
-          >
-            Channel view (Streaming)
-          </button>
-          {/* BOTÓN CORREGIDO PARA LA VISTA ASILO */}
-          <button 
-            style={getBtnStyle(view === 'asylum', view)} 
-            onClick={() => setView('asylum')}
-          >
-            🏥 Asylum Files (Sagas)
-          </button>
-         <button 
-          style={getBtnStyle(view === 'blog', view)}
-          onClick={() => setView('blog')} 
-        >
-          📝 Blog
-        </button>
-                 <button 
-          style={getBtnStyle(view === 'gashapon', view)}
-          onClick={() => setView('gashapon')} 
-        >
-          🎰 Gachapon
-        </button>
-        </div>
-      </nav>
+  <div style={{ backgroundColor: getBackgroundColor(view), minHeight: '100dvh', transition: 'background-color 0.3s' }}>
 
-      {/* CONTENIDO PRINCIPAL (RENDERIZADO CONDICIONAL CORREGIDO) */}
-      <div style={{ 
-        maxWidth: view === 'canales' || view === 'asylum' ? '1200px' : '800px', 
-        margin: '0 auto', 
-        padding: '20px',
-        transition: 'all 0.3s'
-      }}>
-        {view === 'categorias' && <GallerySearch data={itemsData} />}
-        {view === 'canales' && <StreamingGallery data={itemsData} />}
-        {view === 'asylum' && <SagaGallery />}
-        {view === 'blog' && <BlogSection />}
-        {view === 'gashapon' && <GachaponSection />}
-        
+    <nav className="navbar">
+      <h1 className="navbar-title" style={{ color: getTitleColor(view) }}>
+        Dynamic Gallery
+      </h1>
+
+      <button
+        className="navbar-toggle"
+        style={{ color: getTitleColor(view) }}
+        onClick={() => setMenuOpen(o => !o)}
+        aria-label="Abrir menú"
+        aria-expanded={menuOpen}
+      >
+        {menuOpen ? '✖' : '☰'}
+      </button>
+
+      <div className={`navbar-menu ${menuOpen ? 'open' : ''}`}>
+        {NAV_ITEMS.map(({ id, label }) => (
+          <button
+            key={id}
+            style={getBtnStyle(view === id, view)}
+            onClick={() => goTo(id)}
+          >
+            {label}
+          </button>
+        ))}
       </div>
+    </nav>
 
+    <div
+      className="main-content"
+      style={{ maxWidth: view === 'canales' || view === 'asylum' ? '1200px' : '800px' }}
+    >
+      {view === 'categorias' && <GallerySearch data={itemsData} />}
+      {view === 'canales' && <StreamingGallery data={itemsData} />}
+      {view === 'asylum' && <SagaGallery />}
+      {view === 'blog' && <BlogSection />}
+      {view === 'gashapon' && <GachaponSection />}
     </div>
-  );
+  </div>
+);
 }
 
 // Estilos rápidos para la Navbar

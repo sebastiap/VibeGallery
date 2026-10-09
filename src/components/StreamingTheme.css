@@ -1,15 +1,15 @@
 /* Contenedor Principal Dark Mode */
 .streaming-container {
+  padding: clamp(12px, 3vw, 20px) clamp(12px, 4vw, 40px);
+  min-height: 80dvh;
   background-color: #141414;
   color: #fff;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding: 20px 40px;
   border-radius: 8px;
-  min-height: 80vh;
 }
 
 .streaming-header h2 {
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 5vw, 2rem); 
   margin-bottom: 30px;
   color: #e50914; /* Rojo estilo streaming */
 }
@@ -28,9 +28,8 @@
 
 /* Carrusel Horizontal */
 .carousel {
-display: grid;
-  /* Esto hace la magia: botones de mínimo 150px, que se expanden (1fr) si sobra espacio */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
   gap: 15px;
   width: 100%;
 }
@@ -46,9 +45,9 @@ display: grid;
 
 /* Tarjetas */
 .carousel-card {
+  min-width: 0;          /* el min-width: 250px fuerza desborde */
+  height: clamp(120px, 30vw, 140px);
   position: relative;
-  min-width: 250px;
-  height: 140px;
   border-radius: 4px;
   cursor: pointer;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -63,7 +62,7 @@ display: grid;
 
 .card-image {
   width: 100%;
-  /*height: 100%;*/
+  height: 100%;
   object-fit: cover;
 }
 
@@ -102,6 +101,8 @@ display: grid;
 }
 
 .streaming-modal {
+  max-height: 90dvh;
+  overflow-y: auto;
   background-color: #181818;
   width: 90%;
   max-width: 600px;
@@ -113,8 +114,8 @@ display: grid;
 }
 
 .modal-banner {
+  height: clamp(150px, 40vw, 250px);
   width: 100%;
-  height: 250px;
   object-fit: cover;
 }
 
@@ -138,12 +139,12 @@ display: grid;
 }
 
 .modal-content {
-  padding: 30px;
+  padding: clamp(16px, 4vw, 30px);
 }
 
 .modal-content h2 {
+  font-size: clamp(1.4rem, 5vw, 2rem); 
   margin: 0 0 15px 0;
-  font-size: 2rem;
 }
 
 .modal-meta {
@@ -158,7 +159,7 @@ display: grid;
 }
 
 .modal-desc {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 3vw, 1.1rem);
   line-height: 1.5;
   margin-bottom: 20px;
 }
@@ -225,14 +226,19 @@ display: grid;
   backdrop-filter: blur(5px);
 }
 
+.streaming-modal-backdrop,
+.streaming-character-modal-backdrop { padding: 1rem; }
+
 .streaming-character-modal {
+  padding: clamp(16px, 4vw, 30px);
+  max-height: 90dvh;
+  overflow-y: auto;
   background-color: #141414;
   border: 1px solid #333;
   border-top: 4px solid #e50914;
   width: 90%;
   max-width: 450px;
   border-radius: 8px;
-  padding: 30px;
   text-align: center;
   box-shadow: 0 20px 40px rgba(0,0,0,0.9);
   animation: scaleIn 0.2s ease-out;
@@ -271,7 +277,15 @@ display: grid;
   color: #141414;
 }
 
+
+
 @keyframes scaleIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
+}
+
+/* Hover solo en dispositivos con mouse */
+@media (hover: none) {
+  .card-overlay { opacity: 1; }          /* en táctil nunca habría hover */
+  .carousel-card:hover { transform: none; box-shadow: none; }
 }

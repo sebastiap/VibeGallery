@@ -1,8 +1,9 @@
 /* Contenedor Principal del Blog */
 .blog-container {
+  width: 100%;
+  padding: clamp(1rem, 4vw, 2rem);
   max-width: 800px;
   margin: 0 auto;
-  padding: 2rem;
   font-family: 'Comic Sans MS', 'Bubblegum Sans', cursive, sans-serif;
   transition: all 0.3s ease;
   border-radius: 15px;
@@ -25,6 +26,8 @@
 
 /* Cabecera del Blog y Botón Sol/Luna */
 .blog-header {
+  flex-wrap: wrap;
+  gap: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -67,7 +70,7 @@
 }
 
 .blog-title {
-  font-size: 1.5rem;
+  font-size: clamp(1.2rem, 4vw, 1.5rem); 
   margin-bottom: 0.5rem;
 }
 
@@ -79,8 +82,8 @@
 }
 
 .blog-image {
+  height: clamp(160px, 40vw, 220px);
   width: 100%;
-  height: 220px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 1rem;
@@ -105,4 +108,9 @@
   border-radius: 20px;
   font-size: 0.8rem;
   border: 1px solid currentColor;
+}
+
+@media (max-width: 600px) {
+  .blog-container { border-radius: 0; border-width: 2px; }
+  .blog-card { padding: 1rem; box-shadow: 3px 3px 0 currentColor; }
 }

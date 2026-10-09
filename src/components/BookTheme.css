@@ -2,9 +2,10 @@
 
 /* Contenedor Principal (Estilo Página de Libro) */
 .book-container {
+  margin: 15px auto;
+  width: calc(100% - 20px);
+  padding: clamp(16px, 5vw, 40px);
   max-width: 750px;
-  margin: 30px auto;
-  padding: 40px;
   background-color: #fbf5df; /* Color pergamino/papel antiguo */
   background-image: radial-gradient(#e0d5b5 1px, transparent 0);
   background-size: 20px 20px;
@@ -56,8 +57,7 @@
 
 .button-group {
   display: grid;
-  /* Esto hace la magia: botones de mínimo 150px, que se expanden (1fr) si sobra espacio */
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr));
   gap: 15px;
   width: 100%;
 }
@@ -89,10 +89,9 @@
   text-align: center;
   animation: fadeIn 0.5s ease-in-out;
 }
-
 .book-title {
   font-family: 'Cinzel', serif;
-  font-size: 2.2rem;
+font-size: clamp(1.5rem, 6vw, 2.2rem);
   color: #6d1b1b;
   margin-bottom: 10px;
 }
@@ -113,6 +112,7 @@
 }
 
 .book-image {
+  height: auto;
   max-width: 100%;
   max-height: 320px;
   border: 4px solid #fff;
@@ -144,6 +144,7 @@
 
 /* --- ESTILOS DEL MODAL DE PERSONAJES (Estilo Pergamino) --- */
 .character-modal-backdrop {
+  padding: 1rem;
   position: fixed;
   top: 0;
   left: 0;
@@ -158,6 +159,9 @@
 }
 
 .character-modal {
+  padding: clamp(20px, 5vw, 40px);
+  max-height: 90dvh;
+  overflow-y: auto;
   background-color: #fbf5df;
   background-image: radial-gradient(#e0d5b5 1px, transparent 0);
   background-size: 20px 20px;
@@ -177,4 +181,13 @@
   margin-top: 0;
   border-bottom: 1px dashed #b89768;
   padding-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+  .book-description {
+    text-align: left;      /* justify queda con huecos feos en pantallas angostas */
+    padding: 0;
+    font-size: 1rem;
+  }
+  .book-breadcrumbs { line-height: 1.8; }
 }

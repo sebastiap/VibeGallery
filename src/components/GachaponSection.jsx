@@ -40,7 +40,7 @@ const buildFullPool = () => [
     nombre: i.Name,
     subtitulo: `${i.Category} • ${i.Type || i.Canal || 'Objeto'}`,
     imagen: i.Imagen || 'https://picsum.photos/seed/item/200/200',
-    frase: i.Descripcion || i.Detalles || 'Una maravillosa historia por descubrir en la galería.',
+    frase: i.Descripcion || i.Detalles || 'A mad story to learn about...',
     link: i.Link || i.Sitio || '#',
     tipo: 'item'
   })),
@@ -49,7 +49,7 @@ const buildFullPool = () => [
     nombre: p.Nombre,
     subtitulo: `Origen: ${p.origen}`,
     imagen: p.Imagen || 'https://picsum.photos/seed/personaje/200/200',
-    frase: p.Info?.Frase || p.Historia || '¡Un personaje icónico de la colección!',
+    frase: p.Info?.Frase || p.Historia || 'An Iconic character!',
     link: p.bots?.[0]?.Link || p.historia?.[0]?.Link || '#',
     tipo: 'personaje'
   }))
@@ -189,7 +189,7 @@ export default function GachaponSection() {
   };
 
   const resetCollection = () => {
-    if (window.confirm('¿Deseas reiniciar tu colección y limpiar el almacenamiento local?')) {
+    if (window.confirm('¿Do you want to restart your collection?')) {
       clearCollection();
       setCollection([]);
       setAvailablePool(buildFullPool());
@@ -243,7 +243,7 @@ export default function GachaponSection() {
                 style={{
                   background: `linear-gradient(135deg, ${COLORES[i % COLORES.length]} 50%, #ffffff 50%)`,
                   top: `${20 + (i * 15) % 130}px`,
-                  left: `${25 + (i * 35) % 180}px`,
+                  left: `calc((100% - 38px) * ${((i * 35) % 180) / 180})`,
                   animationDelay: `${i * 0.3}s`
                 }}
               />
@@ -281,7 +281,7 @@ export default function GachaponSection() {
         {/* Historial de Colección y Filtros */}
         <div className="gacha-collection">
           <div className="gacha-collection-header">
-            <h3>🎁 Your Colection ({collection.length}/{MAX_GACHA_LIMIT})</h3>
+            <h3>🎁 Your Collection ({collection.length}/{MAX_GACHA_LIMIT})</h3>
             {collection.length > 0 && (
               <button className="gacha-reset-btn" onClick={resetCollection} title="Reiniciar">
                 🗑️ Restart
